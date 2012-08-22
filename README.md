@@ -73,29 +73,29 @@ create accounts for themselves.
 
        LDAP authentication is the recommended way to manage account in Clockwork
        Raven. If your LDAP server supports SSL/TLS, copy
-       config/auth.example_ldap_encrypted.yml to config/auth.yml. If your LDAP
-       server does not, copy config/auth.example_ldap_unencrypted.yml
-       to config/auth.yml. Follow the instructions in that file to connect
+       `config/auth.example_ldap_encrypted.yml` to `config/auth.yml`. If your LDAP
+       server does not, copy `config/auth.example_ldap_unencrypted.yml`
+       to `config/auth.yml`. Follow the instructions in that file to connect
        Clockwork Raven to your LDAP server and grant access to specific LDAP
        groups and users.
 
        **Password Authentication**
 
-       If you can't use an LDAP server, you can configure Clockwork Raven use
+       If you can't use an LDAP server, you can configure Clockwork Raven to use
        "password authentication," which will allow you to manually create
        accounts. Copy config/auth.example_password.yml to config/auth.yml. Then,
        you can create accounts by running "rake users:add" and change passwords
        with "rake users:change_password". Note that you will need to set up your
        database (explained below) before using these rake tasks.
 4. Set up the database. If the databases you configured Clockwork Raven to use in
-   config/database.yml do not exist, run "rake db:create" to create them.
-   Then, run "rake db:structure:load" to load the database structure into your
+   config/database.yml do not exist, run `rake db:create` to create them.
+   Then, run `rake db:structure:load` to load the database structure into your
    database.
 5. Start up the background workers. Just
    run `rake raven:resque` to start up 4 background workers. You can start
    up more background workers by passing an argument to the rake task:
    `rake raven:resque[16]` will start up 16 background workers.
-6. Run the server. To run the server, run "rails s".
+6. Run the server. To run the server, run `rails server`.
 
 ## Documentation
 
@@ -118,14 +118,14 @@ ask questions and discuss development.
 
 We would love any help adding ideas or implementing them!
 
-* JSON/REST API
-* Provide the option to have multiple Mechanical Turk users complete each task
+* JSON/REST API.
+* Provide the option to have multiple Mechanical Turk users complete each task.
 * Provide in-depth analytics about workers and automate the process of choosing
   trusted workers.
 
 ## Contributing
 
-To contribute to Clockwork Raven, fork the repo and, make your changes, and
+To contribute to Clockwork Raven, fork the repo, make your changes, and
 submit a pull request. All pull requests should be against `*-wip` branches.
 Nothing gets committed/merged directly to master. To merge your pull request,
 you'll need to include appropriate documentation and tests. Get in touch if you
@@ -134,11 +134,25 @@ have any questions about what you need to do to get your contributions accepted.
 ## Authors
 
 * Ben Weissmann, [@benweissmann](https://twitter.com/benweissmann)
-
-Thanks for assistance and contributions:
-
 * Edwin Chen, [@echen](https://twitter.com/echen)
-* Dave Buchfuhrer [@daveFNbuck](https://twitter.com/daveFNbuck)
+* Dave Buchfuhrer, [@daveFNbuck](https://twitter.com/daveFNbuck)
+
+## Versioning
+
+The current version is in the VERSION file and accessible in the code as
+ClockworkRaven::VERSION. Releases will be tagged with their release number in
+git.
+
+Clockwork Raven uses [semantic versioning](http://semver.org). Basically,
+this means that versions will be of the form X.Y.Z, where X is the major version
+(incremented when backwards-incompatible changes are introduced), Y is the minor
+version (incremented when backwards-compatible features are introduced), and X
+is the patch number (incremented when backwards-compatible bug fixes are
+introduced). Note however, that these are only hard rules once Clockwork Raven
+reaches 1.x. Until then, we will do our best to adhere to these policies
+(particularly with regards to not introducing backwards-incompatible changes in
+patch releases), but we may make backwards-incompatible changes while only
+incrementing the minor version number.
 
 ## License
 
